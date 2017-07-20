@@ -27,5 +27,18 @@
     - docker-ce
     - python-docker-py
 
+
+- replace:
+    path: "{{docker_service}}"
+    regexp: '{{find_execstart}}'
+    replace: '{{replace_execstart}}'
+    backup: no
+
+- name: reload systemctl
+  command: systemctl daemon-reload
+
+- name: restart docker service
+  command: systemctl restart docker
+
 - name: making sure pip installed
   shell: curl -sSL https://bootstrap.pypa.io/get-pip.py | python
