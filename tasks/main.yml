@@ -1,8 +1,10 @@
 ---
-- name: Print OS
+- name: Print ansible_os_family
   debug: var=ansible_os_family
-- name: Print Distribution
+- name: Print ansible_distribution_major_version
   debug: var=ansible_distribution_major_version
+- name: Print ansible_distribution
+  debug: var=ansible_distribution
 - name: Install docker and dependencies
   include: "os_family/{{ ansible_os_family }}.yml"
 
